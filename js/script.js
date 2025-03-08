@@ -1,9 +1,8 @@
 let submit_btn = document.querySelector('#submit_btn');
 let Find_btn = document.querySelector('#Find_btn');
-
+// submit btn at work
 submit_btn.addEventListener('click', event => {
   let Find_btn = document.querySelector('#Find_btn');
-
   // form defalt reload stop
   event.preventDefault();
   let name = document.querySelector('#name').value.trim();
@@ -24,6 +23,8 @@ submit_btn.addEventListener('click', event => {
   );
   let contriy_error = document.querySelector('#contriy_error');
 
+  //  name validate the dowon code
+
   if (name == '') {
     name_error.innerHTML = 'Enter your valid name';
     nameStyle.style.borderColor = 'red';
@@ -34,6 +35,9 @@ submit_btn.addEventListener('click', event => {
     nameStyle.style.borderColor = '#d4d4d4';
     nameStyle.style.color = 'black';
   }
+
+  // email validatet
+
   if (email == '') {
     email_error.innerHTML = 'Enter your valid email';
     emailStyle.style.borderColor = 'red';
@@ -43,6 +47,9 @@ submit_btn.addEventListener('click', event => {
     emailStyle.style.borderColor = '#d4d4d4';
     emailStyle.style.color = 'black';
   }
+
+  // password validate
+
   if (password == '') {
     password_error.innerHTML = 'Enter your valid password';
     passwordStyle.style.borderColor = 'red';
@@ -59,6 +66,9 @@ submit_btn.addEventListener('click', event => {
     passwordStyle.style.borderColor = '#d4d4d4';
     passwordStyle.style.color = 'black';
   }
+
+  //  confirmpassword validtdet
+
   if (confirmpassword == '') {
     confirm_password_error.innerHTML = 'Enter your password';
     confirmPasswordStyle.style.borderColor = 'red';
@@ -100,6 +110,7 @@ submit_btn.addEventListener('click', event => {
   }
 });
 
+// featicing api the cuntry and error handaling
 function dynamic_cuntriy_name_Fun(country_name) {
   let API = `https://restcountries.com/v3.1/name/${country_name}`;
 
@@ -114,10 +125,13 @@ function dynamic_cuntriy_name_Fun(country_name) {
     .catch(error => {
       console.log(error);
     });
-  // fetchCurrencyNameByCode(country_name);
 }
+
+// country desing in js comon and dynamiy
+
 function comon_html(mainDataStore) {
   let html_append = document.querySelector('.html_append');
+  let sesedata = Object.values(mainDataStore.currencies)[0].name;
 
   let randerHtml = `
   <div class="country_data_main">
@@ -130,16 +144,17 @@ function comon_html(mainDataStore) {
     mainDataStore?.population
   )}</p>
   <p id="cuntry_Borders">Borders: ${mainDataStore?.borders} </p>
-  <p id="cuntry_currency">Currency: menoy</p>
+  <p id="cuntry_currency">Currency: ${sesedata}</p>
   <p id="cuntry_capital">Capital: ${mainDataStore?.capital}</p>
   <p id="cuntry_Area">Area: ${mainDataStore?.area} square kilometres</p>
   </div>
   </div>  
 
 `;
-  // html_append.insertAdjacentHTML('beforeend', randerHtml);
   html_append.innerHTML = randerHtml;
 }
+
+// Find country at world
 
 Find_btn.addEventListener('click', event => {
   event.preventDefault();
@@ -151,11 +166,11 @@ Find_btn.addEventListener('click', event => {
     Find_btn.style.marginTop = '-8px';
   } else {
     contriy_error.innerHTML = '';
-    // console.log(main_cuntryname);
     dynamic_cuntriy_name_Fun(main_cuntryname);
-    // main_cuntryname_value.value = '';
   }
 });
+
+// number to convert milion and bilion and k
 
 function formatNumber(num) {
   if (num >= 1_000_000_000) {
@@ -168,32 +183,3 @@ function formatNumber(num) {
     return num.toString(); // Less than 1K
   }
 }
-
-// async function fetchCurrencyNameByCode(currencyCode) {
-//   try {
-//     const response = await fetch(
-//       `https://restcountries.com/v3.1/currency/${currencyCode}`
-//     );
-
-//     if (!response.ok) {
-//       throw new Error(`Error: ${response.status} - ${response.statusText}`);
-//     }
-
-//     const data = await response.json();
-
-//     // কারেন্সির নাম বের করা
-//     data.forEach(country => {
-//       const currencyKey = Object.keys(country.currencies)[0]; // ডাইনামিক কারেন্সি Key
-//       const currencyName = country.currencies[currencyKey].name; // কারেন্সির নাম
-//       console.log(
-//         `Currency Code: ${currencyKey}, Currency Name: ${currencyName}`
-//       );
-//     });
-//   } catch (error) {
-//     console.error('Fetching error:', error);
-//   }
-// }
-
-// // উদাহরণ: BDT (বাংলাদেশি টাকা) এর জন্য ফেচ করা
-
-// fetchCurrencyNameByCode('bangladesh');
