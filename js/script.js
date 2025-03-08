@@ -31,6 +31,8 @@ submit_btn.addEventListener('click', event => {
   } else {
     // email.style.marginTop = '-15px';
     name_error.innerHTML = '';
+    nameStyle.style.borderColor = '#d4d4d4';
+    nameStyle.style.color = 'black';
   }
   if (email == '') {
     email_error.innerHTML = 'Enter your valid email';
@@ -38,6 +40,8 @@ submit_btn.addEventListener('click', event => {
     emailStyle.style.color = 'red';
   } else {
     email_error.innerHTML = '';
+    emailStyle.style.borderColor = '#d4d4d4';
+    emailStyle.style.color = 'black';
   }
   if (password == '') {
     password_error.innerHTML = 'Enter your valid password';
@@ -46,12 +50,14 @@ submit_btn.addEventListener('click', event => {
   } else {
     password_error.innerHTML = '';
     let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (password < 6 || password > 10 || emailPattern.value(password)) {
+    if (password < 6 || password > 10) {
       password_error.innerHTML =
         'your password is low min-6 max-10 spacear key @ $ % ^ & * (';
       passwordStyle.style.borderColor = 'red';
       passwordStyle.style.color = 'red';
     }
+    passwordStyle.style.borderColor = '#d4d4d4';
+    passwordStyle.style.color = 'black';
   }
   if (confirmpassword == '') {
     confirm_password_error.innerHTML = 'Enter your password';
@@ -59,6 +65,8 @@ submit_btn.addEventListener('click', event => {
     confirmPasswordStyle.style.color = 'red';
   } else {
     confirm_password_error.innerHTML = '';
+    confirmPasswordStyle.style.borderColor = '#d4d4d4';
+    confirmPasswordStyle.style.color = 'black';
 
     if (password === confirmpassword) {
       if (confirmpassword < 6 || confirmpassword > 10) {
@@ -67,6 +75,8 @@ submit_btn.addEventListener('click', event => {
         confirmPasswordStyle.style.color = 'red';
       }
       confirm_password_error.innerHTML = '';
+      confirmPasswordStyle.style.borderColor = '#d4d4d4';
+      confirmPasswordStyle.style.color = 'black';
     } else {
       confirm_password_error.innerHTML = 'password not match';
       confirmPasswordStyle.style.borderColor = 'red';
@@ -77,14 +87,17 @@ submit_btn.addEventListener('click', event => {
     contriy_error.innerHTML = 'Enter your countriy name';
     country_nameStyle.style.borderColor = 'red';
     country_nameStyle.style.color = 'red';
-    Find_btn.style.marginTop = '-5px';
+    Find_btn.style.marginTop = '0px';
   } else {
     contriy_error.innerHTML = '';
-
     Find_btn.style.marginTop = '13px';
+    let main = document.querySelector('.main');
+    main.style.display = 'none';
+    let body = document.querySelector('body');
+    let h6 = document.createElement('h6');
+    h6.innerHTML = 'Your Form submitetd Thank You';
+    body.appendChild(h6);
   }
-
-  alert('click');
 });
 
 function dynamic_cuntriy_name_Fun(country_name) {
@@ -101,11 +114,10 @@ function dynamic_cuntriy_name_Fun(country_name) {
     .catch(error => {
       console.log(error);
     });
+  // fetchCurrencyNameByCode(country_name);
 }
 function comon_html(mainDataStore) {
   let html_append = document.querySelector('.html_append');
-  let mainTaka = mainDataStore.currencies;
-  console.log(mainTaka);
 
   let randerHtml = `
   <div class="country_data_main">
@@ -118,13 +130,13 @@ function comon_html(mainDataStore) {
     mainDataStore?.population
   )}</p>
   <p id="cuntry_Borders">Borders: ${mainDataStore?.borders} </p>
-  <p id="cuntry_currency">Currency: Money</p>
+  <p id="cuntry_currency">Currency: menoy</p>
   <p id="cuntry_capital">Capital: ${mainDataStore?.capital}</p>
   <p id="cuntry_Area">Area: ${mainDataStore?.area} square kilometres</p>
   </div>
   </div>  
-  
-  `;
+
+`;
   // html_append.insertAdjacentHTML('beforeend', randerHtml);
   html_append.innerHTML = randerHtml;
 }
@@ -141,7 +153,7 @@ Find_btn.addEventListener('click', event => {
     contriy_error.innerHTML = '';
     // console.log(main_cuntryname);
     dynamic_cuntriy_name_Fun(main_cuntryname);
-    main_cuntryname_value.value = '';
+    // main_cuntryname_value.value = '';
   }
 });
 
@@ -156,3 +168,32 @@ function formatNumber(num) {
     return num.toString(); // Less than 1K
   }
 }
+
+// async function fetchCurrencyNameByCode(currencyCode) {
+//   try {
+//     const response = await fetch(
+//       `https://restcountries.com/v3.1/currency/${currencyCode}`
+//     );
+
+//     if (!response.ok) {
+//       throw new Error(`Error: ${response.status} - ${response.statusText}`);
+//     }
+
+//     const data = await response.json();
+
+//     // কারেন্সির নাম বের করা
+//     data.forEach(country => {
+//       const currencyKey = Object.keys(country.currencies)[0]; // ডাইনামিক কারেন্সি Key
+//       const currencyName = country.currencies[currencyKey].name; // কারেন্সির নাম
+//       console.log(
+//         `Currency Code: ${currencyKey}, Currency Name: ${currencyName}`
+//       );
+//     });
+//   } catch (error) {
+//     console.error('Fetching error:', error);
+//   }
+// }
+
+// // উদাহরণ: BDT (বাংলাদেশি টাকা) এর জন্য ফেচ করা
+
+// fetchCurrencyNameByCode('bangladesh');

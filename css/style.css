@@ -230,3 +230,7 @@ span {
   height: 100%;
   object-fit: cover;
 }
+
+h6 {
+  font-size: 70px;
+}
