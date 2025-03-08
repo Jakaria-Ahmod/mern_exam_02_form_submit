@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+
+
+  <div class="container">
+    <div class="main">
+      <form action="">
+        <h1>Registration Form</h1>
+        <div class="name_email_parent">
+          <div class="name_main">
+            <input type="text" id="name" placeholder="Enter Your name">
+            <span id="name_error"></span>
+          </div>
+          <div class="email_main">
+            <input type="email" id="email" placeholder="Enter Your email">
+            <span id="email_error"></span>
+
+          </div>
+        </div>
+        <div>
+          <input type="password" id="password" placeholder="Enter your password">
+          <span id="password_error"></span>
+        </div>
+        <div>
+          <input type="password" id="Confirmpassword" placeholder="Confirm Password">
+          <span id="Confirm_password_error"></span>
+        </div>
+        <div class="cuntruy_parent">
+          <div>
+            <input type="text" id="country_name" placeholder="Enter your Country">
+            <span id="contriy_error"></span>
+          </div>
+
+          <button id="Find_btn">Find</button>
+        </div>
+        <div class="html_append">
+
+        </div>
+        <div class="submit_btn_paretn">
+          <button id="submit_btn">Submit Data</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
