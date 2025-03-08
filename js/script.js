@@ -59,11 +59,12 @@ submit_btn.addEventListener('click', event => {
   } else {
     password_error.innerHTML = '';
     let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (password < 6 || password > 10) {
+    if (password.length < 6 || password.length > 10) {
       password_error.innerHTML =
         'your password is low min-6 max-10 spacear key @ $ % ^ & * (';
       passwordStyle.style.borderColor = 'red';
       passwordStyle.style.color = 'red';
+      return true;
     }
     passwordStyle.style.borderColor = '#d4d4d4';
     passwordStyle.style.color = 'black';
@@ -85,6 +86,7 @@ submit_btn.addEventListener('click', event => {
         password_error.innerHTML = 'your password is low';
         confirmPasswordStyle.style.borderColor = 'red';
         confirmPasswordStyle.style.color = 'red';
+        return true;
       }
       confirm_password_error.innerHTML = '';
       confirmPasswordStyle.style.borderColor = '#d4d4d4';
