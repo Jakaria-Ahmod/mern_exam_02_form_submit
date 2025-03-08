@@ -81,7 +81,7 @@ submit_btn.addEventListener('click', event => {
     confirmPasswordStyle.style.color = 'black';
 
     if (password === confirmpassword) {
-      if (confirmpassword < 6 || confirmpassword > 10) {
+      if (confirmpassword.length < 6 || confirmpassword.length > 10) {
         password_error.innerHTML = 'your password is low';
         confirmPasswordStyle.style.borderColor = 'red';
         confirmPasswordStyle.style.color = 'red';
