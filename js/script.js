@@ -42,10 +42,12 @@ submit_btn.addEventListener('click', event => {
     email_error.innerHTML = 'Enter your valid email';
     emailStyle.style.borderColor = 'red';
     emailStyle.style.color = 'red';
+    true;
   } else {
     email_error.innerHTML = '';
     emailStyle.style.borderColor = '#d4d4d4';
     emailStyle.style.color = 'black';
+    false;
   }
 
   // password validate
@@ -87,6 +89,13 @@ submit_btn.addEventListener('click', event => {
       confirm_password_error.innerHTML = '';
       confirmPasswordStyle.style.borderColor = '#d4d4d4';
       confirmPasswordStyle.style.color = 'black';
+      let main = document.querySelector('.main');
+      main.style.display = 'none';
+      let body = document.querySelector('body');
+      let h6 = document.createElement('h6');
+      h6.innerHTML = 'Your Form submitetd Thank You';
+      body.appendChild(h6);
+      return false;
     } else {
       confirm_password_error.innerHTML = 'password not match';
       confirmPasswordStyle.style.borderColor = 'red';
@@ -101,13 +110,31 @@ submit_btn.addEventListener('click', event => {
   } else {
     contriy_error.innerHTML = '';
     Find_btn.style.marginTop = '13px';
-    let main = document.querySelector('.main');
-    main.style.display = 'none';
-    let body = document.querySelector('body');
-    let h6 = document.createElement('h6');
-    h6.innerHTML = 'Your Form submitetd Thank You';
-    body.appendChild(h6);
+    country_nameStyle.style.borderColor = '#d4d4d4';
+
+    return false;
   }
+
+  if (
+    name !== '' ||
+    email !== ' ' ||
+    password !== '' ||
+    confirmpassword !== ''
+  ) {
+    // alert('sorry for ther next page');
+    console.log('Thank you');
+    return true;
+  }
+  // else {
+  //   let main = document.querySelector('.main');
+  //   main.style.display = 'none';
+  //   let body = document.querySelector('body');
+  //   let h6 = document.createElement('h6');
+  //   h6.innerHTML = 'Your Form submitetd Thank You';
+  //   body.appendChild(h6);
+  //   alert('clicked');
+  //   return false;
+  // }
 });
 
 // featicing api the cuntry and error handaling
